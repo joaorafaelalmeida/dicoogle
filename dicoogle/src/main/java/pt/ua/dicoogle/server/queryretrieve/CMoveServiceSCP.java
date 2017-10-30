@@ -27,9 +27,6 @@ import java.util.ArrayList;
 import java.util.concurrent.Executor;
 
 import org.dcm4che2.data.Tag;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import javax.xml.transform.TransformerConfigurationException;
 import org.dcm4che2.data.DicomElement;
@@ -47,7 +44,6 @@ import pt.ua.dicoogle.sdk.datastructs.MoveDestination;
 import pt.ua.dicoogle.server.DicomNetwork;
 import pt.ua.dicoogle.server.SearchDicomResult;
 import pt.ua.dicoogle.core.ServerSettings;
-import pt.ua.dicoogle.rGUI.server.controllers.Logs;
 
 /**
  *
@@ -251,10 +247,8 @@ public class CMoveServiceSCP extends CMoveService {
                 }
             }
 
-            //Logs.getInstance().addLog(ll);
             if (CMoveID==null||CMoveID.equals(""))
             {
-                //DebugManager.getInstance().debug("No originator message ID");
                 return null;
             }
             try
@@ -264,44 +258,9 @@ public class CMoveServiceSCP extends CMoveService {
             } catch (Exception ex)
             {
                 ex.printStackTrace();
-                //DebugManager.getInstance().debug("Error Sending files to Storage Server!");
             }
         }
 
-        /** UnNecessary now 
-
-        // put a BufferedReader on the ls output
-
-        InputStream inputstream =
-        proc.getInputStream();
-        InputStreamReader inputstreamreader =
-        new InputStreamReader(inputstream);
-        BufferedReader bufferedreader =
-        new BufferedReader(inputstreamreader);
-
-        // read the ls output
-
-        String line;
-        try
-        {
-        while ((line = bufferedreader.readLine()) != null)
-        {
-        System.out.println(">>>"+line);
-        }
-        //replay = new MoveRSP(keys, rsp, this.core); // Third Party Move
-        } catch (IOException ex)
-        {
-        LoggerFactory.getLogger(CMoveServiceSCP.class).error(ex.getMessage(), ex);
-        }
-        try
-        {
-        Thread.sleep(100);
-        //replay = new MoveRSP(keys, rsp, this.core); // Third Party Move
-        } catch (InterruptedException ex)
-        {
-        LoggerFactory.getLogger(CMoveServiceSCP.class).error(ex.getMessage(), ex);
-        }
-         */
         replay = new MoveRSP(data, rsp); // Third Party Move
         return replay;
 

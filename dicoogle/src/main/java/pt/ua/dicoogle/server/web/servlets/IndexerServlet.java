@@ -347,7 +347,6 @@ public class IndexerServlet extends HttpServlet {
 			}
 
 			// HashMap<String, Object> settings = idx.getSettings();
-			// Services svcs = Services.getInstance();
 			// svcs.processAdvancedSettings(settings, advSettings);
 
 			// try to apply the settings
