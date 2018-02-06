@@ -89,11 +89,6 @@ class App extends React.Component {
 		{
 			this.props.history.pushState(null, 'login');
 		}
-
-    $("#menu-toggle").click(function (e) {
-      e.preventDefault();
-      $("#wrapper").toggleClass("toggled");
-    });
 	}
 
 	handleUserStoreUpdate(data) {
@@ -121,7 +116,12 @@ class App extends React.Component {
     // pre-fetch modules of other plugin types
 		Webcore.fetchPlugins(['search', 'result-options', 'query', 'result'], Webcore.fetchModules)
 		this.pluginsFetched = true;
-  }
+	}
+
+	onClickToggle(e) {
+		e.preventDefault();
+		document.getElementById("wrapper").classList.toggle("toggled");
+	}
 
 	logout() {
 		const Dicoogle = dicoogleClient();
@@ -143,7 +143,7 @@ class App extends React.Component {
 		return (
 		<div>
 			<div className="topbar">
-				<img className="btn_drawer" src="assets/drawer_menu.png" id="menu-toggle" />
+				<img className="btn_drawer" src="assets/drawer_menu.png" id="menu-toggle" onClick={this.onClickToggle} />
 				<a>Dicoogle</a>
         <div className="pull-right" bsStyle="padding:15px">
 
